@@ -10,12 +10,19 @@
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ url_for('search') }}">Search</a></li>
-                    <li><a href="{{ url_for('favourites') }}">Favourite Breweries</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('favourites') }}">Favourite Breweries</a></li>
+                    {% endif %}
                 </ul>
             </li>
-            <li><a class="nav-item nav-link" href="{{ url_for('register') }}">Sign Up</a></li>
-            <li><a class="nav-item nav-link" href="{{ url_for('login') }}">Sign In</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a></li>
+                <li><a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a></li>
 
+            {% else %}
+                <li><a class="nav-item nav-link" href="{{ url_for('register') }}">Sign Up</a></li>
+                <li><a class="nav-item nav-link" href="{{ url_for('login') }}">Sign In</a></li>
+            {% endif %}
         </ul>
     </div>
 </nav>

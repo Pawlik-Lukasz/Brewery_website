@@ -11,7 +11,11 @@
 <!DOCTYPE html>
 <body>
     {% block content %}
-        <!-- Some content gets extended into here. -->
+
+    {% for mesg in get_flashed_messages() %}
+            <h1>{{ mesg }}</h1>
+        {% endfor %}
+
     {% endblock %}
 </body>
 </html>

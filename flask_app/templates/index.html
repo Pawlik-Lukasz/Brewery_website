@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% include "navbar.html" %}
+
+{% block content %}
+
+    {% with mesgs = get_flashed_messages(category_filter=["error"]) %}
+    {% if mesgs %}
+        {% for msg in mesgs %}
+            <div class="alert alert-danger mb-3" role="alert">
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+
+{% with mesgs = get_flashed_messages(category_filter=["success"]) %}
+    {% if mesgs %}
+        {% for msg in mesgs %}
+            <div class="alert alert-success mb-3" role="alert">
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <p>Hello main page!</p>
+
+{% endblock %}
